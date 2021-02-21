@@ -62,7 +62,7 @@ def merakilogin():
 
 @app.route('/meraki/networks')
 def merakinetworks():
-  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/822027/networks', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
+  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{meraki_org_id}}/networks', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
@@ -71,7 +71,7 @@ def merakinetworks():
 
 @app.route('/meraki/firewall')
 def merakifirewall():
-  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{ meraki_org_id }}/networks/N_645140646620834618/l3FirewallRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
+  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{ meraki_org_id }}/networks/' + meraki_network_reading +'/l3FirewallRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
@@ -80,7 +80,7 @@ def merakifirewall():
 
 @app.route('/meraki/pf')
 def merakiportforward():
-  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/822027/networks/N_645140646620834617/portForwardingRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
+  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{meraki_org_id}}/networks/' + meraki_network_reading +'/portForwardingRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
@@ -125,7 +125,7 @@ def editrouter(id):
 
 @app.route('/device42')
 def device42():
-  r = requests.get('https://swaggerdemo.device42.com/api/1.0/suggest_subnet/4/?mask_bits=28','Accept: application/json', 'Authorization: Basic YXBpX3VzZXI6YXAhX3VzZXJfcHIwZA==')
+  r = requests.get('https://swaggerdemo.device42.com/api/1.0/suggest_subnet/4/?mask_bits=28','Accept: application/json', 'Authorization: Basic ' + d42key)
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
