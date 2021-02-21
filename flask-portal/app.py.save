@@ -1,0 +1,13 @@
+from flask import Flask
+import re
+
+app = Flask(__name__)
+
+@app.route('/home')
+def hello():
+  tvheadend_text = "<a href= 'http://192.168.10.5:9981/playlist/channels.m3u>Watch "
+
+  return "Hello world 2! " + tvheadend_text
+
+if __name__=="__main__":
+  app.run(debug=True, host='0.0.0.0')

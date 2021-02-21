@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Edit Router</title>
+{% endblock %}
+
+
+
+{% block body %}
+<h1>Edit router</h1>
+
+    <hr>
+    <h2>Edit network device:</h2>
+    <form action='/routers/edit/{{router.id}}' method='POST'>
+        Node: <input type='text' name='node' id='node' value='{{router.node}}'>
+        <br>
+        Address: <input type='text' name='address' id='address' value='{{router.address}}'>
+        <br>
+        Vendor: <input type='text' name='vendor' id='vendor' value='{{router.vendor}}'>
+        <br>
+        <input type='submit' value='Apply Node Changes'>
+    </form>
+    <hr>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Meraki</title>
+{% endblock %}
+
+
+
+{% block body %}
+<h1>Meraki</h1>
+
+    <hr>
+    <table class="table">
+        <thead><tr><th>ID</th><th>Name</th><th>URL</th></tr></thead>
+    {% for org in orgs %}
+        <tbody>
+            <tr><td>{{ org.id }}</td><td>{{ org.name }}</td><td>{{ org.url }}</td></tr>
+        </tbody>
+        <hr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

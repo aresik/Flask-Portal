@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Meraki</title>
+{% endblock %}
+
+
+
+{% block body %}
+<h1>Meraki Networks</h1>
+{% if nets %}
+    <hr>
+    <table class="table">
+    <thead><tr><th>Network ID</th><th>Name</th><th>Timezone</th><th>Type</th></tr></thead>
+        {% for net in nets %}
+            <tbody>
+                <tr><td>{{ net.id }}</td><td>{{ net.name }}</td><td>{{ net.timeZone }}</td><td>{{ net.type }}</td></tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% if pf %}
+    <hr>
+    <table class="table">
+    <thead><tr><th>Name</th><th>Protocol</th><th>LAN IP</th><th>Local Port</th><th>Public Port</th><th>Allowed IPs</th></tr></thead>
+        {% for p in pf.rules %}
+            <tbody>
+                <tr><td>{{ p.name }}</td><td>{{ p.protocol }}</td><td>{{ p.lanIp }}</td><td>{{ p.localPort }}</td><td>{{ p.publicPort }}</td><td>{{ p.allowedIps }}</td></tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% if fw %}
+    <hr>
+    <table class="table">
+    <thead><tr><th>Comment</th><th>Protocol</th><th>Source IP</th><th>Source Port</th><th>Dst IP</th><th>Dst Port</th><th>Action</th></tr></thead>
+        {% for f in fw %}
+            <tbody>
+                <tr><td>{{ f.comment }}</td><td>{{ f.protocol }}</td><td>{{ f.srcCidr }}</td><td>{{ f.srcPort }}</td><td>{{ f.destCidr }}</td><td>{{ f.policy }}</td></tr>
+            </tbody>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}

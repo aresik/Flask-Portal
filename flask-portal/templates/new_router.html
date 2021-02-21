@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>New Router</title>
+{% endblock %}
+
+{% block body %}
+<h1>All Routers</h1>
+
+    <hr>
+    <h2>Add new network devices:</h2>
+    <form action='/routers' method='POST' class="my-2 my-md-0">
+        <table class="table">
+            <tr><td>
+            <div class="form-group row form-inline">
+                <div class="col-xs-2">
+                    Node:</td>
+                    <td><input {width: 10%} class="form-control " type="text" name='node' id='node' placeholder="Node Hostname"
+                        aria-label="Node">
+                </div>
+            </div>
+            </td></tr>
+            <tr><td>
+            <div class="form-group row form-inline">
+                <div class="col-xs-2">
+                    Address: </td>
+                    <td><input {width: 10%} class="form-control " type="text" name='address' id='address'
+                        placeholder="IP Address" aria-label="Address">
+                </div>
+            </div>
+            </td></tr>
+            <tr><td>
+            <div class="form-group row form-inline">
+                <div class="col-xs-2">
+                    Vendor: </td>
+                    <td><input {width: 10%} class="form-control " type="text" name='vendor' id='vendor' placeholder="Vendor"
+                        aria-label="Vendor">
+                </div>
+            </div>
+            </td></tr>
+        </table>
+        <input type='submit' value='Add Node'>
+    </form>
+    <hr>
+
+{% endblock %}

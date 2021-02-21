@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Routers</title>
+{% endblock %}
+
+
+
+{% block body %}
+<br>
+<div>
+    <h1 style='display:inline'>All Routers</h1>
+    <a style='display:inline' class='btn btn-success float-right' href="/routers/new">Add Router</a>
+</div>
+<br>
+    <table class="table">
+        <thead><tr><th>ID</th><th>Node</th><th>Address</th><th>Vendor</th></tr></thead>
+<br>
+    {% for router in routers %}
+        <tbody>
+            <tr><td>{{ router.id }}</td><td>{{ router.node }}</td><td>{{ router.address }}</td>
+                <td>
+                    {% if router.vendor %}
+                        <p>{{ router.vendor }}</p>
+                    {% else %}
+                        <p>Vendor Unknown</p>
+                    {% endif %}
+                </td>
+                <td><a class='btn btn-danger' href='/routers/delete/{{ router.id }}'>Delete</a></td>
+                <td><a class='btn btn-primary' href='/routers/edit/{{ router.id }}'>Edit</a></td>
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+{% endblock %}
