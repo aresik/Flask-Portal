@@ -56,13 +56,13 @@ def merakiapi():
 def merakilogin():
   r = requests.get('https://dashboard.meraki.com/api/v0/organizations/', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
-  pretty_r = json.dumps(pretty_json, indent=2)
+  #pretty_r = json.dumps(pretty_json, indent=2)
   return render_template('meraki.html', orgs=pretty_json)
   #return pretty_r
 
 @app.route('/meraki/networks')
 def merakinetworks():
-  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{meraki_org_id}}/networks/', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
+  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/' + meraki_org_id + '/networks', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
