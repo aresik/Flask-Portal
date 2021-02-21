@@ -71,7 +71,7 @@ def merakinetworks():
 
 @app.route('/meraki/firewall')
 def merakifirewall():
-  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{ meraki_org_id }}/networks/' + meraki_network_reading +'/l3FirewallRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
+  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{meraki_org_id}}/networks/' + meraki_network_reading + '/l3FirewallRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
@@ -80,7 +80,7 @@ def merakifirewall():
 
 @app.route('/meraki/pf')
 def merakiportforward():
-  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{meraki_org_id}}/networks/' + meraki_network_reading +'/portForwardingRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
+  r = requests.get('https://dashboard.meraki.com/api/v0/organizations/{{meraki_org_id}}/networks/' + meraki_network_reading + '/portForwardingRules', headers={'X-Cisco-Meraki-API-Key': x_cisco_meraki_api_key, 'Content-Type': 'application/json'})
   pretty_json = json.loads(r.text)
   #pretty_r = json.dumps(pretty_json, indent=2)
   pretty_r = json.dumps(pretty_json, sort_keys = True, indent = 4, separators = (',', ': '))
